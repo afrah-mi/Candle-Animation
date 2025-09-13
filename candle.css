@@ -1,0 +1,241 @@
+.main-container {
+    display: flex;
+    min-height: 75vh;
+    min-width: 100px;
+    align-items: center;
+    justify-content: center;
+}
+
+.candle {
+    width: 80px;
+    height: 385px;
+    position: relative;
+    display: grid;
+}
+
+.top {
+    display: flex;
+    height: 120px;
+    position: relative;
+    justify-content: center;
+}
+
+.top div{
+    position: absolute;   
+}
+
+.glow {
+    border-radius: 100%;
+    width: 200px;
+    filter: blur(35px);
+    background: radial-gradient(ellipse at center, rgb(255, 255, 255) 0%, rgba(255, 165, 0, 0.7) 40%, rgba(255, 140, 0, 0.3) 50%, transparent 100%);
+    height: 130px;
+    bottom: 0;
+    z-index: 1;
+    animation: flicker_animation 3s infinite;
+}
+
+
+.flame {
+    position: absolute;
+    bottom: 5px;
+    transform: translateX(-50%);
+    width: 15px;
+    height: 90px;
+    background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.9) 0%, rgba(255, 165, 0, 0.7) 40%, rgba(255, 140, 0, 0.3) 70%, transparent 100%);
+    border-radius: 50% 50% 10% 10%;
+    transform-origin: bottom;
+    animation: flame_animation 3s ease-in-out infinite alternate, grow_flame 3s ease-in-out infinite alternate;
+    filter: blur(0.8px);
+    z-index: 4;
+    opacity: 0.9;
+}
+
+.blue-part {
+    width: 15px;
+    height: 30px;
+    background: radial-gradient(ellipse at center, rgb(17, 0, 255) 0%, rgba(187, 255, 243, 0.6) 40%, rgba(255, 255, 255, 0.3) 70%, transparent 100%);
+    z-index: 3;
+    bottom: 5px;
+    border-radius: 50% 50% 40% 40%;
+    animation: blue_animation 3s ease-in-out infinite alternate, blue_flame 3s ease-in-out infinite alternate;
+    filter: blur(0.9px);
+}
+
+.thread::after,
+.blue-part::after,
+
+.wax::before {
+    content: '';
+    display: block;
+}
+
+.blue-part::after {
+    width: 75%;
+    border-radius: 50%;
+    background: rgba(169, 68, 68, 0.39);
+    position: relative;
+    height: 70%;
+    margin: 0 auto;
+    top: 30%;
+}
+
+.thread {
+    width: 5px;
+    height: 25px;
+    margin: 0 auto;
+    border-radius: 40% 40% 10% 10%;
+    background: linear-gradient(#ff7800, black 40%);
+    bottom: 0;
+    z-index: 2;
+}
+
+.thread::after {
+    width: 100%;
+    height: 30%;
+    top: 70%;
+    position: absolute;
+    border-radius: 40% 40% 10% 10%;
+    background: linear-gradient(0deg, #898989, #000000);
+}
+
+.wax {
+    width: 100%;
+    bottom: 65px;
+    height: 200px;
+    z-index: 1;
+    position: absolute;
+    box-shadow: inset 20px -30px 50px 0 rgba(0, 0, 0, 0.4), inset -20px 0 50px 0 rgba(0, 0, 0, 0.4);
+    background: #190f02;
+    background: linear-gradient(#e48825, #e78e0e, #833c03, #4c1a03 50%, #1c0900);
+    /*
+    background: linear-gradient(#e48825, #e78e0e, #833c03, #4c1a03 50%, #1c0900);
+    box-shadow: inset 20px -30px 50px 0 rgba(0, 0, 0, 0.4), inset -20px 0 50px 0 rgba(234, 229, 130, 0.4);*/
+}
+
+.wax::before {
+    width: 96%;
+    height: 5%;
+    bottom: 97%;
+    position: absolute;
+    left: 0px;
+    border-radius: 50%;
+    border: 2px solid #d38327;
+    background: #cd8538;
+    background: radial-gradient(#eaa121, #ba6409 45%, #b86409 80%);
+    /*background: radial-gradient(#ef973e 20%, rgba(241, 128, 0, 0.4) 50%, #ff8c08 70%);*/
+}
+
+.candle-bottom {
+    bottom: 65px;
+    position: absolute;
+    justify-self: center;
+    height: 30px;
+    width: 150px;
+    border-radius: 50%;
+    background: radial-gradient(#1b0000, #101010);
+}
+
+
+
+
+@keyframes flicker_animation {
+    50% {
+        opacity: 0.9;
+    }
+}
+
+@keyframes flame_animation {
+
+    0%,
+    100% {
+        transform: rotate(-2deg);
+    }
+
+    100% {
+        transform: rotate(2deg);
+
+    }
+}
+
+@keyframes grow_flame {
+
+    0%,
+    100% {
+        height: 65%;
+    }
+
+    50% {
+        height: 60%;
+    }
+
+}
+
+@keyframes blue_animation {
+
+    0%,
+    100% {
+        transform: rotate(-1deg);
+    }
+
+    100% {
+        transform: rotate(1deg);
+
+    }
+}
+
+@keyframes blue_flame {
+
+    0%,
+    100% {
+        height: 45%;
+    }
+
+    100% {
+        height: 40%;
+    }
+
+}
+
+
+/*
+.flameOne {
+    position:absolute;
+    bottom: 0px;
+    width: 20px;
+    transform-origin: bottom;
+    border-radius: 50% 50% 10% 10%;
+    box-shadow: 0px -5px 7px 0px orange;
+    /*background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.9) 0%, rgba(255, 165, 0, 0.7) 40%, rgba(255, 140, 0, 0.3) 50%, transparent 100%);*/
+  /* background: linear-gradient(white 70%, transparent);
+    animation: flameOne_animation 3s ease-in-out infinite alternate, grow_flameOne 3s ease-in-out infinite alternate
+
+}*/
+/*
+@keyframes flameOne_animation {
+
+    0%,
+    100% {
+        transform: rotate(-2deg);
+    }
+
+    100% {
+        transform: rotate(2deg);
+
+    }
+}
+*/
+/*
+@keyframes grow_flameOne {
+
+    0%,
+    100% {
+        height: 65%;
+    }
+
+    50% {
+        height: 60%;
+    }
+
+}
+*/
